@@ -1,5 +1,4 @@
 package net.javatutorial.tutorials;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

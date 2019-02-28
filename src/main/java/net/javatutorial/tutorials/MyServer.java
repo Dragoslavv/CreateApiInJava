@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MyServer extends HttpServlet {
-	private static final long serialVersionUID = -4751096228274971485L;
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -15,20 +15,20 @@ public class MyServer extends HttpServlet {
 
 		PersonServiceImpl person = new PersonServiceImpl();
 
-		database db = database.getDbCon();
+		database cnn = database.getDbCon();
+//		cnn.insert("Dragoslav","dwadwa","dwadada",123);
+//		cnn.selectAll();
 
-		Person pers  = person.getGagiPerson(88);
-		Person perrc = person.getDummyPerson(99);
+		Person pers  = person.getGagiPerson(2);
+		Person perrc = person.getDummyPerson(3);
+		cnn.select(pers.getId());
 
-		response.getWriter().println(person.addPerson(pers).getMessage() + ":" +  pers.getName() + ":" + pers.getId());
-		response.getWriter().println(person.addPerson(perrc).getMessage() + ":" +  perrc.getName() + ":" + perrc.getId());
+
+		response.getWriter().println(person.addPerson(pers).getMessage() + " : " +  pers.getName() + " : " + pers.getId());
+		response.getWriter().println(person.addPerson(perrc).getMessage() + " : " +  perrc.getName() + " : " + perrc.getId());
+
 	}
 
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response){
-		PersonServiceImpl person = new PersonServiceImpl();
-		request.equals(person);
-	}
 
 	@Override
 	public void init() throws ServletException {
